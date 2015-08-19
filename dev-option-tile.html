@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Dev OptionTile</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+</head>
+<body>
+
+<style>
+
+
+
+li { 
+	width: 11em;
+	height: 2em;
+	list-style: none;
+	border: 1px solid gray;
+	padding: .3em;
+	margin: .3em;
+}
+</style>
+
+<select class="optionTileSource">
+	<option value="1">Tile 1</option>
+	<option value="2">Tile 2</option>
+	<option value="3">Tile 3</option>
+	<option value="4">Tile 4</option>
+</select>
+
+
+<script>
+
+console.log("Hello");
+$( ".optionTileSource option" ).each(function( index, element) {
+	console.log( "Index: " + index );
+	console.log( "Element: " + element );
+});
+
+ 
+
+
+
+
+
+
+
+
+
+var optionTiles = '<ul>';
+
+$( ".optionTileSource option" ).each(function( index, element) {
+
+//console.log( this );
+
+
+
+//console.log($( this ).attr( 'value' ));
+//var option = $( this );
+//console.log(option);
+optionTiles += 
+			'<li data-value="' + $( this ).attr( 'value' ) + '"><span>' + $( this ).text() + '</span></li>';
+  //console.log( $( this ).text()x` );
+
+  //console.log(optionTiles);
+
+});
+
+optionTiles += '</ul>';
+
+ $("body").append(optionTiles);
+
+// executes fn for each matched element
+// so this loops over the result of a search of the DOM for matching elements, not over contained elements
+//$( "li" ).each(function( index ) {
+//  console.log( index + ": " + $( this ).text() );
+//});
+
+// clicking on
+            $("li").click(function(event) {
+               console.log("Click!");
+            });
+            
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<html>
+<head>
+<title>Dev OptionTile</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+</head>
+<body>
+
+<style>
+
+.option-surface { box-sizing: border-box; border: 1px solid red; }
+
+ul { overflow: hidden; }
+
+li { 
+	background: white;
+	color: black;
+	list-style: none;
+	border: 1px solid #ccc;
+	/* border-radius: 4px; */
+	padding: .3em;
+	margin: .3em;
+	float: left;
+	cursor: hand;
+}
+
+ul.option-tiles li:hover {
+	border: 1px solid #333;
+}
+
+
+figure {
+	width: 36%;
+	margin: 8px auto;
+}
+ 
+div.stretchy-wrapper {
+	width: 100%;
+	padding-bottom: 56.25%; /* 16:9 */
+	position: relative;
+	background: black;
+}
+
+/* 
+div.stretchy-wrapper > div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	color: white;
+	font-size: 24px;
+	text-align: center;
+}
+*/
+
+ul {
+	/* border: 1px solid red; */
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/* set squares or rectangles */
+li {
+	
+}
+
+
+li.optionTileSelected {
+	background: #eee;
+	border: 1px solid blue;
+	padding: .3em;
+	margin: .3em;
+}
+
+@media (max-width: 600px) {
+
+	.option-surface {
+		max-width: 100%;
+	}
+
+.option-tile {
+		width: 33.3%;
+		float: left;
+	  }
+
+/** This media query reduces the number of columns to one.
+**/
+
+@media (max-width: 414px) {
+	li {
+		/* background-color: blue; */
+		width: 92%;
+		float:none;
+	  }
+}
+
+
+
+}
+
+</style>
+
+
+<p>First options.
+</p>
+<select id="foo" class="option-tile-source">
+	<option value="1">Tile 1</option>
+	<option value="2">Tile 2</option>
+	<option value="3">Tile 3</option>
+	<option value="4">Tile 4</option>
+	<option value="5">Tile 5</option>	
+	<option value="6">Tile 6</option>
+	<option value="7">Tile 7</option>	
+	<option value="8">Tile 8</option>	
+</select>
+
+<p>Second options.
+</p>
+<select id="bar" class="option-tile-source">
+	<option value="1">Tile 1</option>
+	<option value="2">Tile 2</option>
+	<option value="3">Tile 3</option>
+	<option value="4">Tile 4</option
+	<option value="5">Tile 5</option>
+	<option value="6">Tile 6</option>
+	<option value="7">Tile 7</option>	
+	<option value="8">Tile 8</option>	
+</select>
+
+
+
+<p>Pattern for option tiles:
+
+
+<div class="option-surface">
+	<ul class="option-tiles">
+		<li class="option-tile">1</li>
+		<li class="option-tile">2</li>		
+		<li class="option-tile">3</li>
+	</ul>
+</div>
+
+
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+
+<script>
+
+/* dump
+$( ".option-tile-source option" ).each(function( index, element) {
+	console.log( "Index: " + index );
+	console.log( "Element: " + element );
+});
+*/
+
+
+/*
+$( "select" ).each(function( index, element) {
+		//console.log( this );
+		$(".container").append('Hello World');
+	});
+*/
+
+// Testing
+console.log("How many selects are there?")
+var i=0;
+$('select').each(function(){
+	i++;
+});
+console.log(i);
+
+// Testing
+console.log("How many source selects are there?")
+var i=0;
+$('select.option-tile-source').each(function(){
+	i++;
+});
+console.log(i);
+
+
+
+// iterate over selects
+$('.option-tile').each(function(){console.log("An option ")});
+
+var optionTiles = '';
+
+// iterate over options
+$( ".option-tile-source" ).each(function( index, element) {
+
+optionTiles += '<div class="option-surface">';
+optionTiles += '    <ul class="option-tiles">';
+
+//console.log( this );
+
+//<div class="option-surface">	
+                                       
+//console.log($( this ).attr( 'value' ));
+//var option = $( this );
+//console.log(option);
+optionTiles += 
+			'        <li data-select-index="' + $( this ).attr( 'value' ) + '"><span>' + $( this ).text() + '</span></li>';
+  //console.log( $( this ).text()x` );
+
+  //console.log(optionTiles);
+optionTiles += '</ul></div>';
+
+});
+
+//</div>
+
+
+
+
+
+
+ $("body").append(optionTiles);
+
+
+
+$('.option-tiles li').each(function(index) {
+	console.log("Adding click handler.");
+	$(this).on('click', function() {
+		console.log('Click!');
+		var data = $(this).attr('data-select-index');
+		var id =  $(this).attr('id');
+		$('#' + id).val(data);
+		console.log(data);
+		console.log(id);
+	});
+});
+
+
+
+
+
+
+
+
+// executes fn for each matched element
+// so this loops over the result of a search of the DOM for matching elements, not over contained elements
+//$( "li" ).each(function( index ) {
+//  console.log( index + ": " + $( this ).text() );
+//});
+
+// clicking on
+            $("lixxxx").click(function(event) {
+            	console.log(event);
+				event.stopPropagation();
+            	// Set selected value for original select box on form
+            	$(".option-tile-source").val($(this).attr('data-select-index'));
+            	$(".option-tiles li").css("border-color", 'none');
+           		$(this).css('border-color', 'blue');
+
+            });
+
+
+
+$( ".inner" ).append( "<p>Test</p>" );
+
+</script>
+
+
+
+<!--
+<figure>
+	<div class="stretchy-wrapperoff">
+		<div>Relative Aspect Ratio! Try resizing the browser.</div>
+	</div>
+</figure>
+-->
+
+</body>
+</html>
