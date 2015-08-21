@@ -36,5 +36,7 @@ $('.option-tiles li').each(function(index) {
 		//console.log("Id: " + id);
 		//console.log("Data: " + data);
 		$('#' + id).val(data);
+		text = map[data];
+		$(this).children().text(text);
 	});
 });

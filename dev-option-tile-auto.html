@@ -1,7 +1,10 @@
 <html>
 <head>
 <title>Dev OptionTile</title>
+<!--
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+-->
+<script src="../cdn-cache/google-ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -105,30 +108,30 @@ li.optionTileSelected {
 <p>First options.
 </p>
 <select id="foo" class="option-tile-source">
-	<option value="1">Tile 1</option>
-	<option value="2">Tile 2</option>
-	<option value="3">Tile 3</option>
-	<option value="4">Tile 4</option>
-	<option value="5">Tile 5</option>	
-	<option value="6">Tile 6</option>
-	<option value="7">Tile 7</option>	
-	<option value="8">Tile 8</option>	
+	<option value='{ sku:1235, price:100}'>Option Tile 1</option>
+	<option value="2">Option Tile 2</option>
+	<option value="3">Option Tile 3</option>
+	<option value="4">Option Tile 4</option>
+	<option value="5">Option Tile 5</option>	
+	<option value="6">Option Tile 6</option>
+	<option value="7">Option Tile 7</option>	
+	<option value="8">Option Tile 8</option>	
 </select>
 
 <p>Second options.
 </p>
 <select id="bar" class="option-tile-source">
-	<option value="1">Tile 1</option>
-	<option value="2">Tile 2</option>
-	<option value="3">Tile 3</option>
-	<option value="4">Tile 4</option>
-	<option value="5">Tile 5</option>
-	<option value="6">Tile 6</option>
-	<option value="7">Tile 7</option>	
-	<option value="8">Tile 8</option>	
+	<option value="1">Option Tile 1</option>
+	<option value="2">Option Tile 2</option>
+	<option value="3">Option Tile 3</option>
+	<option value="4">Option Tile 4</option>
+	<option value="5">Option Tile 5</option>
+	<option value="6">Option Tile 6</option>
+	<option value="7">Option Tile 7</option>	
+	<option value="8">Option Tile 8</option>	
 </select>
 
-
+<p>every option comes with a cost, just a clicking a link comes with a cost, only this makes the cost visible</p>
 
 <p>Pattern for option tiles:
 
@@ -213,6 +216,16 @@ $('select.option-tile-source').each(function(ind, val){
 
  $("body").append(optionTiles);
 
+var map = {
+	"1":"callout1",
+	"2":"callout2",
+	"3":"callout3",
+	"4":"callout4",
+	"5":"callout5",
+	"6":"callout6",
+	"7":"callout7",
+	"8":"callout8"
+}
 
 $('.option-tiles li').each(function(index) {
 	console.log("Adding click handler.");
@@ -220,12 +233,16 @@ $('.option-tiles li').each(function(index) {
 		console.log('Click!');
 		var data = $(this).attr('data-select-index');
 		var id = $(this).parent().attr('id');
-		console.log("Id: " + id);
-		console.log("Data: " + data);
+		//console.log("Id: " + id);
+		//console.log("Data: " + data);
 		$('#' + id).val(data);
-		$(this).children().text('foo');
+		text = map[data];
+		var tmp = $(this).children('span').text();
+		$(this).children('span').text(tmp + text);
 	});
 });
+
+
 
 </script>
 
