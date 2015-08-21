@@ -7,6 +7,8 @@
 
 <style>
 
+.option-tile-source { visibility: hidden; }
+
 .option-surface { box-sizing: border-box; border: 1px solid red; }
 
 ul { overflow: hidden; }
@@ -119,7 +121,7 @@ li.optionTileSelected {
 	<option value="1">Tile 1</option>
 	<option value="2">Tile 2</option>
 	<option value="3">Tile 3</option>
-	<option value="4">Tile 4</option
+	<option value="4">Tile 4</option>
 	<option value="5">Tile 5</option>
 	<option value="6">Tile 6</option>
 	<option value="7">Tile 7</option>	
@@ -130,8 +132,7 @@ li.optionTileSelected {
 
 <p>Pattern for option tiles:
 
-
-<div class="option-surface">
+<div id="opts" class="option-surface">
 	<ul class="option-tiles">
 		<li class="option-tile">1</li>
 		<li class="option-tile">2</li>		
@@ -139,12 +140,6 @@ li.optionTileSelected {
 	</ul>
 </div>
 
-
-<h2>Greetings</h2>
-<div class="container">
-  <div class="inner">Hello</div>
-  <div class="inner">Goodbye</div>
-</div>
 
 <script>
 
@@ -164,59 +159,59 @@ $( "select" ).each(function( index, element) {
 */
 
 // Testing
+/*
 console.log("How many selects are there?")
 var i=0;
 $('select').each(function(){
 	i++;
 });
 console.log(i);
+*/
 
 // Testing
+/*
 console.log("How many source selects are there?")
 var i=0;
 $('select.option-tile-source').each(function(){
 	i++;
 });
 console.log(i);
+*/
 
 
-
-// iterate over selects
-$('.option-tile').each(function(){console.log("An option ")});
+/* iterate over JSON array
+$.each(myArray.songs, function (i, ob) {
+    $.each(ob, function (ind, obj) {
+        console.log("key:" + ind + " value:" + obj);
+    });
+});
+*/
 
 var optionTiles = '';
 
-// iterate over options
-$( ".option-tile-source" ).each(function( index, element) {
+// iterate over source selects
+$('select.option-tile-source').each(function(ind, val){
 
-optionTiles += '<div class="option-surface">';
-optionTiles += '    <ul class="option-tiles">';
+	console.log(this); // this contains the selected element and all of its children
 
-//console.log( this );
+	optionTiles += '<div class="option-surface">';
 
-//<div class="option-surface">	
-                                       
-//console.log($( this ).attr( 'value' ));
-//var option = $( this );
-//console.log(option);
-optionTiles += 
-			'        <li data-select-index="' + $( this ).attr( 'value' ) + '"><span>' + $( this ).text() + '</span></li>';
-  //console.log( $( this ).text()x` );
+	optionTiles += '    <ul id="' + $( this ).attr( 'id' ) + '" class="option-tiles">';
 
-  //console.log(optionTiles);
-optionTiles += '</ul></div>';
+	$.each(this, function(index, value) {
+	
+		optionTiles += '        <li id="hello" data-select-index="' + $( this ).attr( 'value' ) + '"><span>' + $( this ).text() + '</span></li>';
+		
+		//console.log("Option" + index);
+		//console.log(this);
+	})
+	//console.log("key:" + ind + " value:" + val);
 
+	optionTiles += '</ul></div>';
+	//value.each(function() { console.log(this) });
 });
 
-//</div>
-
-
-
-
-
-
  $("body").append(optionTiles);
-
 
 
 $('.option-tiles li').each(function(index) {
@@ -224,52 +219,18 @@ $('.option-tiles li').each(function(index) {
 	$(this).on('click', function() {
 		console.log('Click!');
 		var data = $(this).attr('data-select-index');
-		var id =  $(this).attr('id');
+		var id = $(this).parent().attr('id');
+		console.log("Id: " + id);
+		console.log("Data: " + data);
 		$('#' + id).val(data);
-		console.log(data);
-		console.log(id);
+		$(this).children().text('foo');
 	});
 });
-
-
-
-
-
-
-
-
-// executes fn for each matched element
-// so this loops over the result of a search of the DOM for matching elements, not over contained elements
-//$( "li" ).each(function( index ) {
-//  console.log( index + ": " + $( this ).text() );
-//});
-
-// clicking on
-            $("lixxxx").click(function(event) {
-            	console.log(event);
-				event.stopPropagation();
-            	// Set selected value for original select box on form
-            	$(".option-tile-source").val($(this).attr('data-select-index'));
-            	$(".option-tiles li").css("border-color", 'none');
-           		$(this).css('border-color', 'blue');
-
-            });
-
-
-
-$( ".inner" ).append( "<p>Test</p>" );
 
 </script>
 
 
 
-<!--
-<figure>
-	<div class="stretchy-wrapperoff">
-		<div>Relative Aspect Ratio! Try resizing the browser.</div>
-	</div>
-</figure>
--->
 
 </body>
 </html>
