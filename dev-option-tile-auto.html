@@ -10,13 +10,37 @@
 
 <style>
 
+/*
+	Structure is
+<div class="option-surface">
+	<ul id="option-name" class="option-tiles">
+	    <li data-select-index="1" data-price="100">&nbsp;<span>Option Tile 1</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="2" data-price="200">&nbsp;<span>Option Tile 2</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="3" data-price="300">&nbsp;<span>Option Tile 3</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="4" data-price="400">&nbsp;<span>Option Tile 4</span>&nbsp;<span class="delta"></span></li>      
+	</ul>
+</div>
+
+*/
+
 .option-tile-source { visibility: hidden; }
 
-.option-surface { box-sizing: border-box; border: 1px solid red; }
+.option-surface { 
+	box-sizing: border-box;
+	 border: 1px solid red
+}
+
+.option-tile {
+	  }
+
+ul.option-tiles li:hover {
+	border: 1px solid #333;
+}
+
 
 ul { overflow: hidden; }
 
-li { 
+.option-tiles li { 
 	background: white;
 	color: black;
 	list-style: none;
@@ -28,9 +52,6 @@ li {
 	cursor: hand;
 }
 
-ul.option-tiles li:hover {
-	border: 1px solid #333;
-}
 
 
 figure {
@@ -104,12 +125,6 @@ li.optionTileSelected {
 
 </style>
 
-<!-- 
-	<option value='{"sku":"1235", "price":"100"}'>Option Tile 1</option>
--->
-
-<p>First options.
-</p>
 <select id="foo" class="option-tile-source">
 	<option value="1" data-price="100">Option Tile 1</option>
 	<option value="2" data-price="200">Option Tile 2</option>
@@ -121,8 +136,6 @@ li.optionTileSelected {
 	<option value="8" data-price="800">Option Tile 8</option>	
 </select>
 
-<p>Second options.
-</p>
 <select id="bar" class="option-tile-source">
 	<option value="1" data-price="foo">Option Tile 1</option>
 	<option value="2" data-price="bar">Option Tile 2</option>
@@ -130,64 +143,8 @@ li.optionTileSelected {
 	<option value="4" data-price="qux">Option Tile 4</option>
 </select>
 
-<p>every option comes with a cost, just a clicking a link comes with a cost, only this makes the cost visible</p>
-
-<p>Pattern for option tiles:
-
-<div id="opts" class="option-surface">
-	<ul class="option-tiles">
-		<li class="option-tile">1</li>
-		<li class="option-tile">2</li>		
-		<li class="option-tile">3</li>
-	</ul>
-</div>
-
 
 <script>
-
-/* dump
-$( ".option-tile-source option" ).each(function( index, element) {
-	console.log( "Index: " + index );
-	console.log( "Element: " + element );
-});
-*/
-
-
-/*
-$( "select" ).each(function( index, element) {
-		//console.log( this );
-		$(".container").append('Hello World');
-	});
-*/
-
-// Testing
-/*
-console.log("How many selects are there?")
-var i=0;
-$('select').each(function(){
-	i++;
-});
-console.log(i);
-*/
-
-// Testing
-/*
-console.log("How many source selects are there?")
-var i=0;
-$('select.option-tile-source').each(function(){
-	i++;
-});
-console.log(i);
-*/
-
-
-/* iterate over JSON array
-$.each(myArray.songs, function (i, ob) {
-    $.each(ob, function (ind, obj) {
-        console.log("key:" + ind + " value:" + obj);
-    });
-});
-*/
 
 var optionTiles = '';
 
@@ -213,18 +170,7 @@ $('select.option-tile-source').each(function(ind, val){
 	//value.each(function() { console.log(this) });
 });
 
- $("body").append(optionTiles);
-
-var map = {
-	"1":"callout1",
-	"2":"callout2",
-	"3":"callout3",
-	"4":"callout4",
-	"5":"callout5",
-	"6":"callout6",
-	"7":"callout7",
-	"8":"callout8"
-}
+$("body").append(optionTiles);
 
 $('.option-tiles li').each(function(index) {
 	console.log("Adding click handler.");
@@ -237,17 +183,6 @@ $('.option-tiles li').each(function(index) {
 		//console.log("Data: " + data);
 		// set value for source select input
 		$('#' + id).val(data);
-
-		//text = map[data];
-		//v
-		// get JSON data for option and dispar tmp = $(this).children('span').text();lay cost in span
-		/* data(key, value) data(obj) */
-		// $("div").data( { "first": "foo", "second":"bar" })
-		// $('.anotherdiv').text($("div").data().second)
-		//var text = $().parseJSON(data).price;
-		//console.log($.parseJSON(data));
-
-		//var pricedata = $('#' + id).children().attr('data-price');
 		
 		// If a cost or callout is defined for this option
 		// display it
@@ -262,8 +197,6 @@ $('.option-tiles li').each(function(index) {
 
 
 </script>
-
-
 
 
 </body>
