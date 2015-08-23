@@ -14,10 +14,10 @@
 	Structure is
 <div class="option-surface">
 	<ul id="option-name" class="option-tiles">
-	    <li data-select-index="1" data-price="100">&nbsp;<span>Option Tile 1</span>&nbsp;<span class="delta"></span></li>
-	    <li data-select-index="2" data-price="200">&nbsp;<span>Option Tile 2</span>&nbsp;<span class="delta"></span></li>
-	    <li data-select-index="3" data-price="300">&nbsp;<span>Option Tile 3</span>&nbsp;<span class="delta"></span></li>
-	    <li data-select-index="4" data-price="400">&nbsp;<span>Option Tile 4</span>&nbsp;<span class="delta"></span></li>      
+	    <li data-select-index="1" data-cost="100">&nbsp;<span>Option Tile 1</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="2" data-cost="200">&nbsp;<span>Option Tile 2</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="3" data-cost="300">&nbsp;<span>Option Tile 3</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="4" data-cost="400">&nbsp;<span>Option Tile 4</span>&nbsp;<span class="delta"></span></li>      
 	</ul>
 </div>
 
@@ -107,21 +107,21 @@ ul.option-tiles {
 </p>
 
 <select id="option-001" class="option-tile-source">
-	<option value="1" data-price="100">Option Tile 1</option>
-	<option value="2" data-price="200">Option Tile 2</option>
-	<option value="3" data-price="300">Option Tile 3</option>
-	<option value="4" data-price="400">Option Tile 4</option>
-	<option value="5" data-price="500">Option Tile 5</option>	
-	<option value="6" data-price="600">Option Tile 6</option>
-	<option value="7" data-price="700">Option Tile 7</option>	
-	<option value="8" data-price="800">Option Tile 8</option>	
+	<option value="1" data-cost="100">Option Tile 1</option>
+	<option value="2" data-cost="200">Option Tile 2</option>
+	<option value="3" data-cost="300">Option Tile 3</option>
+	<option value="4" data-cost="400">Option Tile 4</option>
+	<option value="5" data-cost="500">Option Tile 5</option>	
+	<option value="6" data-cost="600">Option Tile 6</option>
+	<option value="7" data-cost="700">Option Tile 7</option>	
+	<option value="8" data-cost="800">Option Tile 8</option>	
 </select>
 
 <select id="option-002" class="option-tile-source">
-	<option value="1" data-price="foo">Option Tile 1</option>
-	<option value="2" data-price="bar">Option Tile 2</option>
-	<option value="3" data-price="baz">Option Tile 3</option>
-	<option value="4" data-price="qux">Option Tile 4</option>
+	<option value="1" data-cost="foo">Option Tile 1</option>
+	<option value="2" data-cost="bar">Option Tile 2</option>
+	<option value="3" data-cost="baz">Option Tile 3</option>
+	<option value="4" data-cost="qux">Option Tile 4</option>
 </select>
 
 
@@ -140,7 +140,7 @@ $('select.option-tile-source').each(function(ind, val){
 
 	$.each(this, function(index, value) {
 	
-		optionTiles += '        <li class="option-tile" data-select-index="' + $( this ).attr( 'value' ) + '" data-price="' + $(this).attr('data-price') + '">&nbsp;<span>' + $( this ).text() + '</span>&nbsp;<span class="delta"></span></li>';
+		optionTiles += '        <li class="option-tile" data-select-index="' + $( this ).attr( 'value' ) + '" data-cost="' + $(this).attr('data-cost') + '">&nbsp;<span>' + $( this ).text() + '</span>&nbsp;<span class="delta"></span></li>';
 		
 		//console.log("Option" + index);
 		//console.log(this);
@@ -156,7 +156,7 @@ $("body").append(optionTiles);
 $('.option-tiles li').each(function(index) {
 	$(this).on('click', function() {
 		var data = $(this).attr('data-select-index');
-		var delta = $(this).attr('data-price');
+		var delta = $(this).attr('data-cost');
 		var id = $(this).parent().attr('id');
 		$('#' + id).val(data);
 		
