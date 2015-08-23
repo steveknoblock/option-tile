@@ -10,33 +10,40 @@ var optionTiles = '';
 // iterate over source selects
 $('select.option-tile-source').each(function(ind, val){
 
-	// this contains the selected element and all of its children
+	console.log(this); // this contains the selected element and all of its children
+
 	optionTiles += '<div class="option-surface">';
 
 	optionTiles += '    <ul id="' + $( this ).attr( 'id' ) + '" class="option-tiles">';
 
 	$.each(this, function(index, value) {
 	
-		optionTiles += '        <li id="hello" data-select-index="' + $( this ).attr( 'value' ) + '"><span>' + $( this ).text() + '</span></li>';
-
+		optionTiles += '        <li class="option-tile" data-select-index="' + $( this ).attr( 'value' ) + '" data-cost="' + $(this).attr('data-cost') + '">&nbsp;<span>' + $( this ).text() + '</span>&nbsp;<span class="delta"></span></li>';
+		
+		//console.log("Option" + index);
+		//console.log(this);
 	})
+	//console.log("key:" + ind + " value:" + val);
 
 	optionTiles += '</ul></div>';
-
+	//value.each(function() { console.log(this) });
 });
 
 $("body").append(optionTiles);
 
 $('.option-tiles li').each(function(index) {
-	console.log("Adding click handler.");
-	$(this).on('click', function(event) {
-		event.stopPropagation();
+	$(this).on('click', function() {
 		var data = $(this).attr('data-select-index');
+		var delta = $(this).attr('data-cost');
 		var id = $(this).parent().attr('id');
-		//console.log("Id: " + id);
-		//console.log("Data: " + data);
 		$('#' + id).val(data);
-		text = map[data];
-		$(this).children().text(text);
+		
+		// If a cost or callout is defined for this option
+		// display it
+		if( delta !== 'undefined' ) {
+			$('span.delta').text('');
+			$(this).children('span.delta').text(delta);
+		}
+
 	});
 });
