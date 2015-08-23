@@ -5,6 +5,8 @@
 // Steve Knoblock 2015
 // MIT License
 
+$(document).ready(function(){
+
 var optionTiles = '';
 
 // iterate over source selects
@@ -19,14 +21,10 @@ $('select.option-tile-source').each(function(ind, val){
 	$.each(this, function(index, value) {
 	
 		optionTiles += '        <li class="option-tile" data-select-index="' + $( this ).attr( 'value' ) + '" data-cost="' + $(this).attr('data-cost') + '">&nbsp;<span>' + $( this ).text() + '</span>&nbsp;<span class="delta"></span></li>';
-		
-		//console.log("Option" + index);
-		//console.log(this);
-	})
-	//console.log("key:" + ind + " value:" + val);
-
+	});
+	
 	optionTiles += '</ul></div>';
-	//value.each(function() { console.log(this) });
+	
 });
 
 $("body").append(optionTiles);
@@ -46,4 +44,6 @@ $('.option-tiles li').each(function(index) {
 		}
 
 	});
+});
+
 });

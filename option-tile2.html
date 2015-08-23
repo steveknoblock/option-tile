@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>Dev OptionTile</title>
+<!--
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+-->
+<script src="../cdn-cache/google-ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/optionTile.js"></script>
+<script src="option-tile-module.js"></script>
+</head>
+<body>
+
+<style>
+
+/*
+	Structure is
+<div class="option-surface">
+	<ul id="option-name" class="option-tiles">
+	    <li data-select-index="1" data-cost="100">&nbsp;<span>Option Tile 1</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="2" data-cost="200">&nbsp;<span>Option Tile 2</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="3" data-cost="300">&nbsp;<span>Option Tile 3</span>&nbsp;<span class="delta"></span></li>
+	    <li data-select-index="4" data-cost="400">&nbsp;<span>Option Tile 4</span>&nbsp;<span class="delta"></span></li>      
+	</ul>
+</div>
+
+.option-surface
+	.option-tiles
+		.option-tile
+
+*/
+
+.option-tile-source { visibility: hidden; }
+
+
+.option-surface { 
+	box-sizing: border-box;
+}
+
+.option-tiles li { 
+	background: white;
+	color: black;
+	list-style: none;
+	border: 1px solid #ccc;
+	/* border-radius: 4px; */
+	padding: .3em;
+	margin: .3em;
+	float: left;
+	overflow: hidden;
+	cursor: hand;
+}
+
+ul.option-tiles li:hover {
+	border: 1px solid #333;
+}
+
+ul.option-tiles {
+	/* border: 1px solid red; */
+	padding: 0;
+	margin: 0;
+	clear: both;
+}
+
+.option-tile-selected {
+	background: #eee;
+	border: 1px solid blue;
+	padding: .3em;
+	margin: .3em;
+}
+
+@media (max-width: 600px) {
+
+	.option-surface {
+		max-width: 100%;
+	}
+
+	.option-tilex {
+		width: 33.3%;
+		float: left;
+	 }
+}
+
+/** This media query reduces the number of columns to one.
+**/
+
+@media (max-width: 414px) {
+	li {
+		/* background-color: blue; */
+		width: 92%;
+		float:none;
+	  }
+}
+
+}
+
+</style>
+
+<h1>optionTile</h1>
+
+<p>jQuery that grabs all marked SELECT inputs on a page and transforms them automatically into tile-like option sets. Supports displaying an optional "option cost." This was inspired by a use case where the "options" effect of the Apple Store product configurator was desired, in an app that could only output SELECT menus for data.
+</p>
+
+<p>MIT License.
+</p>
+
+<p>optionTile was designed to be responsive, and to suggest the tiles of "flat interfaces," but you can style it any way you want.
+
+
+<p>To turn a SELECT input into an optionTile, just add the class .option-tile-source to the SELECT input.
+</p>
+
+<select id="option-001" class="option-tile-source">
+	<option value="1" data-cost="100">Option Tile 1</option>
+	<option value="2" data-cost="200">Option Tile 2</option>
+	<option value="3" data-cost="300">Option Tile 3</option>
+	<option value="4" data-cost="400">Option Tile 4</option>
+	<option value="5" data-cost="500">Option Tile 5</option>	
+	<option value="6" data-cost="600">Option Tile 6</option>
+	<option value="7" data-cost="700">Option Tile 7</option>	
+	<option value="8" data-cost="800">Option Tile 8</option>	
+</select>
+
+<select id="option-002" class="option-tile-source">
+	<option value="1" data-cost="foo">Option Tile 1</option>
+	<option value="2" data-cost="bar">Option Tile 2</option>
+	<option value="3" data-cost="baz">Option Tile 3</option>
+	<option value="4" data-cost="qux">Option Tile 4</option>
+</select>
+
+
+</body>
+</html>
