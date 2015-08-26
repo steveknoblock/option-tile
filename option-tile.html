@@ -163,13 +163,14 @@ $('.option-tiles li').each(function(index) {
 		// If a cost or callout is defined for this option
 		// display it
 		if( delta !== 'undefined' ) {
-			$('span.delta').text('');
+			// clear all deltas for this select
+			// needs to only affect this select input, this.span.delta
+			$(this).siblings().children('span.delta').text('');
 			$(this).children('span.delta').text(delta);
 		}
 
 	});
 });
-
 
 </script>
 

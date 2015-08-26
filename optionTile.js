@@ -7,10 +7,12 @@
 
 $(document).ready(function(){
 
-var optionTiles = '';
+
 
 // iterate over source selects
 $('select.option-tile-source').each(function(ind, val){
+
+	var optionTiles = '';
 
 	console.log(this); // this contains the selected element and all of its children
 
@@ -25,9 +27,10 @@ $('select.option-tile-source').each(function(ind, val){
 	
 	optionTiles += '</ul></div>';
 	
+	$("body").append(optionTiles);
 });
 
-$("body").append(optionTiles);
+
 
 $('.option-tiles li').each(function(index) {
 	$(this).on('click', function() {
