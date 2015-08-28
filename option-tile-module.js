@@ -118,6 +118,9 @@
                 var id = $(this).parent().attr('id');
                 $('#' + id).val(data);
         
+                // highlight selected
+                $(this).class('highlight');
+
                 // If a cost or callout is defined for this option
                 // display it
                 if( delta !== 'undefined' ) {
