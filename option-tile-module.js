@@ -1,8 +1,6 @@
-/*!
- * jQuery lightweight plugin boilerplate
- * Original author: @ajpiano
- * Further changes, comments: @addyosmani
- * Licensed under the MIT license
+/*
+ * optionTile
+ * a jQuery plugin to transform SELECT inputs into option tiles.
  */
 
 /* tl;dr
@@ -18,7 +16,6 @@
 // that are not closed properly.
 ;(function ( $, window, document, undefined ) {
 
-    console.log("Running function");
     // undefined is used here as the undefined global
     // variable in ECMAScript 3 and is mutable (i.e. it can
     // be changed by someone else). undefined isn't really
@@ -55,39 +52,20 @@
         this._defaults = defaults;
         this._name = pluginName;
 
-        
-
         this.init();
     }
+
 
     Plugin.prototype = {
 
         init: function() {
-            // Place initialization logic here
-            // You already have access to the DOM element and
-            // the options via the instance, e.g. this.element
-            // and this.options
-            // you can add more functions like the one below and
-            // call them like so: this.yourOtherFunction(this.element, this.options).
-            // ^ Why? This and the two properties mentioned are automatically passed into the function scope.
-            //console.log('clear optionTiles');
-
             
-
-            
-            
-            // this shows to me what these mean and contain
-            console.log(this.element); // this is the matched element
-            console.log(this.options); // these are the options specified in the default
- 
             this_select = this;
 
             // iterate over source selects
             $('select.option-tile-source').each(function(index, value){
 
                 optionTiles = '';
-                console.log(this); // this contains the selected element and all of its children, that is this is set to the item currently being iterated by the function it calls
-
 
                 console.log("Building option tiles ");
                
@@ -111,15 +89,17 @@
                 
             });
 
-             $('.option-tiles li').each(function(index) {
+            $('.option-tiles li').each(function(index) {
                 $(this).on('click', function() {
                 var data = $(this).attr('data-select-index');
                 var delta = $(this).attr('data-cost');
                 var id = $(this).parent().attr('id');
                 $('#' + id).val(data);
         
+                // clear all selected
+                $(this).parent('#' + id).children().removeClass('option-tile-selected');
                 // highlight selected
-                $(this).class('highlight');
+                $(this).addClass('option-tile-selected');
 
                 // If a cost or callout is defined for this option
                 // display it
@@ -129,33 +109,10 @@
                 }
 
             });
-});
-            // I assume to build the HTML shadow control and pass it to the function
-            // it needs to be assigned to a variable or contained in an anon function
-            // passed to the "method" function.
-
-            console.log("this should reference the Plugin now");
-            console.log(this);
-            this.yourOtherFunction(optionTiles);
+        });
 
         },
 
-        yourOtherFunction: function(optionTiles) {
-            /*
-                tl;dr
-                Acccess the elements and options defined by your plugin
-                within a function just by saying this.element or
-                this.options. "this" is still accessible
-                within the function scope.
-            */
-            console.log("Element");
-            console.log(this.element);
-            console.log("Options");
-            console.log(this.options);
-            console.log("optionTiles");
-            console.log(optionTiles);
-            
-        }
     };
 
     // A really lightweight plugin wrapper around the constructor,
@@ -171,5 +128,10 @@
 
 })( jQuery, window, document );
 
-
+/* using
+ * jQuery lightweight plugin boilerplate
+ * Original author: @ajpiano
+ * Further changes, comments: @addyosmani
+ * Licensed under the MIT license
+ */
 

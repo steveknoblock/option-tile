@@ -40,7 +40,7 @@
 	border: 1px solid #333;
 }
 
-.option-tile-selected {
+li.option-tile-selected {
 	background: #eee;
 	border: 1px solid blue;
 	padding: .3em;
