@@ -138,24 +138,24 @@ ul.option-tiles {
 </select>
 
 <select id="option-006" class="option-tile-source">
-	<option value="1" data-cost="foo">Option Tile 1</option>
-	<option value="2" data-cost="bar">Option Tile 2</option>
-	<option value="3" data-cost="baz">Option Tile 3</option>
-	<option value="4" data-cost="qux">Option Tile 4</option>
+	<option value="1" data-cost="0">500GB Serial ATA Drive</option>
+	<option value="2" data-cost="50">1TB Serial ATA Drive</option>
+	<option value="3" data-cost="250">1TB Fusion Drive</option>
+	<option value="4" data-cost="250">256GB Flash Storage</option>
 </select>
 
 <select id="option-007" class="option-tile-source">
-	<option value="1" data-cost="foo">Option Tile 1</option>
-	<option value="2" data-cost="bar">Option Tile 2</option>
-	<option value="3" data-cost="baz">Option Tile 3</option>
-	<option value="4" data-cost="qux">Option Tile 4</option>
+	<option value="1" data-cost="">Apple Magic Mouse</option>
+	<option value="2" data-cost="">Magic Trackpad</option>
+	<option value="3" data-cost="69">Apple Magic Mouse + Magic Trackpad</option>
+	<option value="4" data-cost="">Apple Mouse</option>
 </select>
 
 </form>
 
 <script>
 $(document).ready(function(ind, val){
-    $('<div>').defaultPluginName();
+    $('<div>').optionTile();
 });
 </script>
 

@@ -33,7 +33,7 @@
     // regularly referenced in your plugin).
 
     // Create the defaults once
-    var pluginName = "defaultPluginName",
+    var pluginName = "optionTile",
         defaults = {
             propertyName: "value"
         };
