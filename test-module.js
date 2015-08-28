@@ -112,20 +112,20 @@
             });
 
              $('.option-tiles li').each(function(index) {
-    $(this).on('click', function() {
-        var data = $(this).attr('data-select-index');
-        var delta = $(this).attr('data-cost');
-        var id = $(this).parent().attr('id');
-        $('#' + id).val(data);
+                $(this).on('click', function() {
+                var data = $(this).attr('data-select-index');
+                var delta = $(this).attr('data-cost');
+                var id = $(this).parent().attr('id');
+                $('#' + id).val(data);
         
-        // If a cost or callout is defined for this option
-        // display it
-        if( delta !== 'undefined' ) {
-            $('span.delta').text('');
-            $(this).children('span.delta').text(delta);
-        }
+                // If a cost or callout is defined for this option
+                // display it
+                if( delta !== 'undefined' ) {
+                    $('span.delta').text('');
+                    $(this).children('span.delta').text(delta);
+                }
 
-    });
+            });
 });
             // I assume to build the HTML shadow control and pass it to the function
             // it needs to be assigned to a variable or contained in an anon function
