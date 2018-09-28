@@ -39,7 +39,7 @@
 
     // The actual plugin constructor
     function Plugin( element, options ) {
-        console.log("Constructor");
+        
         this.element = element;
 
         // jQuery has an extend method that merges the
